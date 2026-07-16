@@ -1,5 +1,6 @@
 {
   "name": "elmah-io",
+  "description": "Error monitoring and log management for your production apps, directly from your AI editor via elmah.io.",
   "owner": {
     "name": "elmah.io",
     "email": "info@elmah.io"
