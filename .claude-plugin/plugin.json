@@ -19,7 +19,5 @@
     "debugging",
     "deployments",
     "uptime"
-  ],
-  "skills": "./skills/",
-  "agents": "./agents/"
+  ]
 }
