@@ -1,7 +1,7 @@
 ---
 name: deployment-watchdog
 description: Monitor for new errors and regressions after a deployment. Runs in the background after you ship code and reports back with a health verdict once enough data has accumulated.
-model: fast
+model: sonnet
 background: true
 ---
 
