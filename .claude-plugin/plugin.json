@@ -1,7 +1,7 @@
 {
   "name": "elmah-io",
   "displayName": "elmah.io",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Error monitoring and log management for your production apps. Query logs, investigate errors, track deployments, and check uptime — directly from Claude Code via the elmah.io MCP server.",
   "author": {
     "name": "elmah.io",
