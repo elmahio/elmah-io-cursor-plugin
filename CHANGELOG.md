@@ -13,6 +13,8 @@
 - Added `CONTRIBUTING.md` and `SECURITY.md`
 - Synced `plugin.json` versions with this changelog — 1.1.0 below was never
   reflected in the manifests, so marketplace installs had been stuck on 1.0.0
+- Added a missing `marketplace.json` description and wired `claude plugin
+  validate` into CI as a fast first check
 
 ## 1.1.0 — 2026-06-05
 
