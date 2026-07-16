@@ -1,0 +1,26 @@
+# Eval scenarios for skills/investigate-frequent-errors against the mock MCP
+# server (tests/mocks). See tests/README.md for the assertion schema and how to
+# run this.
+
+scenarios:
+  - name: "Prioritizes the fatal error as P1"
+    prompt: >
+      /elmah-io:investigate-frequent-errors What are our most common errors in
+      the Production API log (log id 11111111-1111-1111-1111-111111111111)?
+    assertions:
+      - type: tool_called
+        tool: mcp__elmahio__messages_list_frequent
+      - type: output_matches
+        pattern: "P1"
+      - type: output_matches
+        pattern: "NullReferenceException"
+    timeout: 120
+
+  - name: "Discovers the right log when none is specified"
+    prompt: "/elmah-io:investigate-frequent-errors What's causing the most errors in production?"
+    assertions:
+      - type: tool_called
+        tool: mcp__elmahio__logs_list
+      - type: tool_called
+        tool: mcp__elmahio__messages_list_frequent
+    timeout: 120

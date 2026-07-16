@@ -1,0 +1,11 @@
+{
+  "name": "elmah-io-ai-plugin-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "eval": "node run-eval.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

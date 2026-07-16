@@ -1,0 +1,23 @@
+# Eval scenario for agents/deployment-watchdog against the mock MCP server
+# (tests/mocks). See tests/README.md for the assertion schema and how to run
+# this.
+#
+# This scenario is invoked with natural language (agents don't take an explicit
+# /plugin:name invocation the way skills do) and lets Claude decide to launch the
+# background agent itself. It is the slowest and most expensive scenario in this
+# suite — the agent runs multiple monitoring checkpoints before it reports a
+# verdict — so it gets a generous timeout.
+
+scenarios:
+  - name: "Detects a post-deploy regression and reports UNHEALTHY"
+    prompt: >
+      Start the deployment watchdog for version 2.4.1 on the Production API log
+      (log id 11111111-1111-1111-1111-111111111111).
+    assertions:
+      - type: tool_called
+        tool: mcp__elmahio__deployments_list
+      - type: tool_called
+        tool: mcp__elmahio__uptime_list
+      - type: output_matches
+        pattern: "UNHEALTHY"
+    timeout: 600

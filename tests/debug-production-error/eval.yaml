@@ -1,0 +1,27 @@
+# Eval scenarios for skills/debug-production-error against the mock MCP server
+# (tests/mocks). See tests/README.md for the assertion schema and how to run this.
+
+scenarios:
+  - name: "Investigates a specific fatal error by log id"
+    prompt: >
+      /elmah-io:debug-production-error Investigate the latest fatal error in the
+      Production API log (log id 11111111-1111-1111-1111-111111111111).
+    assertions:
+      - type: tool_called
+        tool: mcp__elmahio__messages_get
+      - type: tool_called
+        tool: mcp__elmahio__deployments_list
+      - type: output_matches
+        pattern: "NullReferenceException"
+      - type: output_matches
+        pattern: "2\\.4\\.1"
+    timeout: 120
+
+  - name: "Discovers the right log when none is specified"
+    prompt: "/elmah-io:debug-production-error What's going wrong in production right now?"
+    assertions:
+      - type: tool_called
+        tool: mcp__elmahio__logs_list
+      - type: output_matches
+        pattern: "NullReferenceException"
+    timeout: 120
